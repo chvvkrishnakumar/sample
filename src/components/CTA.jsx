@@ -32,6 +32,25 @@ export default function CTA() {
     return d
   })
 
+  function dateKey(d) {
+    const y = d.getFullYear()
+    const m = String(d.getMonth() + 1).padStart(2, '0')
+    const day = String(d.getDate()).padStart(2, '0')
+    return `${y}-${m}-${day}`
+  }
+
+  // Add any specific unavailable dates in ISO format, e.g., '2025-01-01'
+  const unavailableDates = new Set([
+    // '2025-01-01',
+  ])
+
+  const isUnavailableDate = (d) => {
+    const s = startOfDay(d)
+    const isPast = s < today
+    const isWeekend = s.getDay() === 0 || s.getDay() === 6
+    return isPast || isWeekend || unavailableDates.has(dateKey(s))
+  }
+
   const year = visibleMonth.getFullYear()
   const monthIndex = visibleMonth.getMonth()
   const totalDays = getDaysInMonth(year, monthIndex)
@@ -122,31 +141,16 @@ export default function CTA() {
               From first sketch to production-grade systems.
             </p>
 
-            {/* Idea input */}
-            <div className="mt-6 space-y-3">
-              <label htmlFor="idea" className="block text-xs text-neutral-400">Share your idea</label>
-              <textarea
-                id="idea"
-                value={idea}
-                onChange={(e) => setIdea(e.target.value)}
-                placeholder="Tell us briefly what you want to build..."
-                className="w-full rounded-md border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-400/40 focus:border-neutral-600 min-h-[96px]"
-              />
-            </div>
-
-            <button onClick={handleSchedule} className="mt-4 inline-flex items-center justify-center rounded-md bg-amber-400 px-6 py-3 text-sm font-semibold text-black transition hover:bg-amber-300">
-              Schedule now
-            </button>
-
-            <p className="mt-3 text-xs text-neutral-500">
-              No preparation required. We’ll meet you where you are.
-            </p>
+            
           </div>
 
           {/* Right booking calendar */}
-          <div className="rounded-xl border border-neutral-800 bg-neutral-950 p-6 text-left">
+          <div className="rounded-xl border border-neutral-800 bg-neutral-950 p-4 text-left text-[13px] sm:text-[14px] w-full max-w- mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
+              <div className="flex justify-center">
+                <div className="w-full max-w-[280px]">
             <div className="flex items-center justify-between">
-              <p className="text-sm font-medium text-white">
+              <p className="text-xs font-medium text-white">
                 {monthLabel(visibleMonth)} · 30 min
               </p>
               <div className="flex items-center gap-2">
@@ -172,13 +176,13 @@ export default function CTA() {
               </div>
             </div>
 
-            <div className="mt-4 grid grid-cols-7 gap-2 text-center text-xs text-neutral-400">
+            <div className="mt-3 grid grid-cols-7 gap-1.5 text-center text-[11px] text-neutral-400">
               {["S", "M", "T", "W", "T", "F", "S"].map((d) => (
                 <div key={d}>{d}</div>
               ))}
             </div>
 
-            <div className="mt-2 grid grid-cols-7 gap-2 text-sm">
+            <div className="mt-1.5 grid grid-cols-7 gap-1.5 text-xs">
               {/* leading blanks for offset */}
               {Array.from({ length: offset }).map((_, i) => (
                 <div key={`blank-${i}`} />
@@ -187,18 +191,19 @@ export default function CTA() {
               {daysArray.map((day) => {
                 const dateObj = startOfDay(new Date(year, monthIndex, day))
                 const isPast = dateObj < today
+                const isDisabled = isUnavailableDate(dateObj)
                 const isSelected = selectedDate && startOfDay(selectedDate).getTime() === dateObj.getTime()
 
                 return (
                   <button
                     type="button"
                     key={day}
-                    onClick={() => !isPast && setSelectedDate(dateObj)}
-                    disabled={isPast}
-                    className={`rounded-md border py-2 text-center transition-colors ${
+                    onClick={() => !isDisabled && setSelectedDate(dateObj)}
+                    disabled={isDisabled}
+                    className={`rounded-md border py-1.5 text-center transition-colors ${
                       isSelected
                         ? 'border-amber-400 bg-amber-400/10 text-white'
-                        : isPast
+                        : isDisabled
                           ? 'cursor-not-allowed border-neutral-900 text-neutral-700'
                           : 'border-neutral-800 text-neutral-500 hover:border-neutral-600 hover:text-neutral-300'
                     }`}
@@ -213,7 +218,7 @@ export default function CTA() {
               Available times (local time)
             </p>
 
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div className="mt-2.5 flex flex-wrap gap-1.5">
               {["09:00", "10:30", "13:00", "15:30", "17:00"].map((t) => {
                 const isPicked = selectedTime === t
                 return (
@@ -221,7 +226,7 @@ export default function CTA() {
                     type="button"
                     key={t}
                     onClick={() => setSelectedTime(t)}
-                    className={`rounded-full border px-4 py-1 text-xs transition-colors ${
+                    className={`rounded-full border px-3 py-1 text-[11px] transition-colors ${
                       isPicked
                         ? 'border-emerald-400 text-emerald-400'
                         : 'border-neutral-700 text-neutral-400 hover:border-neutral-500 hover:text-neutral-200'
@@ -233,10 +238,25 @@ export default function CTA() {
               })}
             </div>
 
-            <p className="mt-4 text-[10px] text-neutral-500">
+            <p className="mt-3 text-[10px] text-neutral-500">
               {selectedDate ? `Selected: ${selectedDate.toDateString()}` : 'No date selected'}
             </p>
             <p className="text-[10px] text-neutral-500">Timezone auto-detected · Powered by Buildbot booking</p>
+             </div>
+             </div>
+             <div>
+               <p className="text-xs text-neutral-400 mb-2">Share your idea</p>
+               <textarea
+                 value={idea}
+                 onChange={(e) => setIdea(e.target.value)}
+                 placeholder="Tell us briefly what you want to build..."
+                 className="w-full rounded-md border border-neutral-700 bg-neutral-950 px-3 py-2 text-xs text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-400/40 focus:border-neutral-600 min-h-[120px]"
+               />
+               <button onClick={handleSchedule} className="mt-3 w-full inline-flex items-center justify-center rounded-md bg-amber-400 px-4 py-2 text-xs font-semibold text-black transition hover:bg-amber-300">
+                 Schedule now
+               </button>
+             </div>
+           </div>
           </div>
         </div>
       </div>
