@@ -1,20 +1,20 @@
 export default function Team() {
   const team = [
     {
-      name: "Anika Rao",
-      role: "Partner, Product & AI",
+      name: "Konda Partha Saradhi",
+      role: "Co-Founder, CEO & Head of R&D",
       desc: "Former head of product at multiple SaaS scale-ups, now shaping AI-first experiences.",
       image: "/1.png",
     },
     {
-      name: "David Kim",
-      role: "Partner, Engineering",
+      name: "Yalamanchili Swarna Kumar Babu",
+      role: "Co-Founder, Chairman & Managing Director",
       desc: "Leads distributed squads shipping secure, observable platforms for regulated teams.",
       image: "/2.png",
     },
     {
-      name: "Sara Martinez",
-      role: "Partner, Design",
+      name: "Muhammed Rehana Begum",
+      role: "Co-Founder, President and CTO",
       desc: "Crafts systematic design languages that keep multi-product portfolios coherent.",
       image: "/3.png",
     },

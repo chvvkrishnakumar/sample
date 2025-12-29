@@ -30,7 +30,7 @@ export default function Security() {
         </p>
 
         {/* Pills */}
-        <div className="mt-10 flex flex-wrap justify-center gap-3">
+        <div className="mt-4 flex flex-wrap justify-center gap-3">
           {pills.map((p) => (
             <span
               key={p.label}
@@ -43,7 +43,7 @@ export default function Security() {
         </div>
 
         {/* Trust line */}
-        <p className="mt-16 text-[11px] tracking-widest text-gray-500">
+        <p className="mt-8 text-[11px] tracking-widest text-gray-500">
           TRUSTED BY PRODUCT & INNOVATION TEAMS WORLDWIDE
         </p>
 

@@ -1,26 +1,69 @@
 import { useState } from 'react'
 
+function startOfDay(d) {
+  const x = new Date(d)
+  x.setHours(0, 0, 0, 0)
+  return x
+}
+
+function monthLabel(date) {
+  return date.toLocaleString(undefined, { month: 'long', year: 'numeric' })
+}
+
+function getDaysInMonth(year, monthIndex) {
+  return new Date(year, monthIndex + 1, 0).getDate()
+}
+
+function getFirstWeekdayOffset(year, monthIndex) {
+  // Sunday = 0 ... Saturday = 6
+  return new Date(year, monthIndex, 1).getDay()
+}
+
 export default function CTA() {
   const [idea, setIdea] = useState('')
-  const [selectedDay, setSelectedDay] = useState(null) // 1..31
+  const [selectedDate, setSelectedDate] = useState(null) // Date | null
   const [selectedTime, setSelectedTime] = useState('')
 
+  const today = startOfDay(new Date())
+  const [visibleMonth, setVisibleMonth] = useState(() => {
+    const d = new Date()
+    d.setDate(1)
+    d.setHours(0, 0, 0, 0)
+    return d
+  })
+
+  const year = visibleMonth.getFullYear()
+  const monthIndex = visibleMonth.getMonth()
+  const totalDays = getDaysInMonth(year, monthIndex)
+  const offset = getFirstWeekdayOffset(year, monthIndex)
+
+  const firstDayThisMonth = new Date(year, monthIndex, 1)
+  const firstDayCurrentMonth = new Date(today.getFullYear(), today.getMonth(), 1)
+  const canGoPrev = startOfDay(firstDayThisMonth) > startOfDay(firstDayCurrentMonth)
+
+  const nextMonth = () => {
+    const d = new Date(visibleMonth)
+    d.setMonth(d.getMonth() + 1)
+    setVisibleMonth(d)
+  }
+
+  const prevMonth = () => {
+    if (!canGoPrev) return
+    const d = new Date(visibleMonth)
+    d.setMonth(d.getMonth() - 1)
+    setVisibleMonth(d)
+  }
+
   const handleSchedule = () => {
-    // Compose a simple date-time string based on the mock calendar (October 2025)
-    const monthName = 'October'
-    const monthIndex = 9 // 0-based; October = 9
-    const year = 2025
-
-    const dateStr = selectedDay
-      ? new Date(year, monthIndex, selectedDay).toDateString()
-      : 'No date selected'
-
+    const dateStr = selectedDate ? selectedDate.toDateString() : 'No date selected'
     const timeStr = selectedTime || 'No time selected'
 
     console.log('User idea:', idea)
     console.log('Selected date:', dateStr)
     console.log('Selected time:', timeStr)
   }
+
+  const daysArray = Array.from({ length: totalDays }, (_, i) => i + 1)
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-black via-neutral-900 to-neutral-800 px-6 py-24">
@@ -74,11 +117,9 @@ export default function CTA() {
             </ul>
 
             <p className="mt-6 text-xs text-neutral-400">
-              Led by a senior{" "}
-              <span className="font-medium text-emerald-400">
-                CTO / Product Expert
-              </span>
-              . From first sketch to production-grade systems.
+              Led by a senior{' '}
+              <span className="font-medium text-emerald-400">CTO / Product Expert</span>.
+              From first sketch to production-grade systems.
             </p>
 
             {/* Idea input */}
@@ -102,31 +143,64 @@ export default function CTA() {
             </p>
           </div>
 
-          {/* Right booking mock */}
+          {/* Right booking calendar */}
           <div className="rounded-xl border border-neutral-800 bg-neutral-950 p-6 text-left">
-            <p className="text-sm font-medium text-white">
-              October 2025 · 30 min
-            </p>
+            <div className="flex items-center justify-between">
+              <p className="text-sm font-medium text-white">
+                {monthLabel(visibleMonth)} · 30 min
+              </p>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={prevMonth}
+                  disabled={!canGoPrev}
+                  className={`rounded-md border px-2 py-1 text-xs ${
+                    canGoPrev
+                      ? 'border-neutral-700 text-neutral-300 hover:border-neutral-500 hover:text-white'
+                      : 'cursor-not-allowed border-neutral-900 text-neutral-700'
+                  }`}
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  onClick={nextMonth}
+                  className="rounded-md border border-neutral-700 px-2 py-1 text-xs text-neutral-300 hover:border-neutral-500 hover:text-white"
+                >
+                  ›
+                </button>
+              </div>
+            </div>
 
             <div className="mt-4 grid grid-cols-7 gap-2 text-center text-xs text-neutral-400">
-              {["M", "T", "W", "T", "F", "S", "S"].map((d) => (
+              {["S", "M", "T", "W", "T", "F", "S"].map((d) => (
                 <div key={d}>{d}</div>
               ))}
             </div>
 
             <div className="mt-2 grid grid-cols-7 gap-2 text-sm">
-              {[...Array(31)].map((_, i) => {
-                const day = i + 1
-                const isSelected = selectedDay === day
+              {/* leading blanks for offset */}
+              {Array.from({ length: offset }).map((_, i) => (
+                <div key={`blank-${i}`} />
+              ))}
+
+              {daysArray.map((day) => {
+                const dateObj = startOfDay(new Date(year, monthIndex, day))
+                const isPast = dateObj < today
+                const isSelected = selectedDate && startOfDay(selectedDate).getTime() === dateObj.getTime()
+
                 return (
                   <button
                     type="button"
                     key={day}
-                    onClick={() => setSelectedDay(day)}
+                    onClick={() => !isPast && setSelectedDate(dateObj)}
+                    disabled={isPast}
                     className={`rounded-md border py-2 text-center transition-colors ${
                       isSelected
                         ? 'border-amber-400 bg-amber-400/10 text-white'
-                        : 'border-neutral-800 text-neutral-500 hover:border-neutral-600 hover:text-neutral-300'
+                        : isPast
+                          ? 'cursor-not-allowed border-neutral-900 text-neutral-700'
+                          : 'border-neutral-800 text-neutral-500 hover:border-neutral-600 hover:text-neutral-300'
                     }`}
                   >
                     {day}
@@ -160,8 +234,9 @@ export default function CTA() {
             </div>
 
             <p className="mt-4 text-[10px] text-neutral-500">
-              Timezone auto-detected · Powered by Buildbot booking
+              {selectedDate ? `Selected: ${selectedDate.toDateString()}` : 'No date selected'}
             </p>
+            <p className="text-[10px] text-neutral-500">Timezone auto-detected · Powered by Buildbot booking</p>
           </div>
         </div>
       </div>
