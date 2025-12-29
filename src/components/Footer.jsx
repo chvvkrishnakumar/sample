@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="bg-black px-6 pt-20 text-sm text-gray-400">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-6xl">
         {/* Top section */}
         <div className="grid grid-cols-1 gap-16 md:grid-cols-4">
           {/* Brand */}
@@ -113,7 +113,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-4 py-6 text-xs md:flex-row">
           <p>
-            © 2024 Buildbot Technologies, All Rights Reserved
+            © 2025 Buildbot Technologies, All Rights Reserved
           </p>
 
           <div className="flex items-center gap-4">

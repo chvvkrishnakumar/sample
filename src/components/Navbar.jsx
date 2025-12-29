@@ -4,7 +4,7 @@ import { Circle, ArrowRight } from "lucide-react";
 export default function Navbar() {
   return (
     <div className="pointer-events-none fixed inset-x-0 top-6 z-50 flex justify-center">
-      <nav className="pointer-events-auto flex items-center justify-between w-[90%] max-w-7xl px-8 py-4 rounded-full bg-black/90 backdrop-blur-md shadow-lg">
+      <nav className="pointer-events-auto flex items-center justify-between w-[90%] max-w-6xl px-8 py-4 rounded-full bg-black/90 backdrop-blur-md shadow-lg">
         {/* Logo */}
         <div className="flex items-center gap-2">
           <span className="text-white text-lg font-semibold tracking-wide">

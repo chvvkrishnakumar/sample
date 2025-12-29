@@ -1,8 +1,31 @@
+import { useState } from 'react'
+
 export default function CTA() {
+  const [idea, setIdea] = useState('')
+  const [selectedDay, setSelectedDay] = useState(null) // 1..31
+  const [selectedTime, setSelectedTime] = useState('')
+
+  const handleSchedule = () => {
+    // Compose a simple date-time string based on the mock calendar (October 2025)
+    const monthName = 'October'
+    const monthIndex = 9 // 0-based; October = 9
+    const year = 2025
+
+    const dateStr = selectedDay
+      ? new Date(year, monthIndex, selectedDay).toDateString()
+      : 'No date selected'
+
+    const timeStr = selectedTime || 'No time selected'
+
+    console.log('User idea:', idea)
+    console.log('Selected date:', dateStr)
+    console.log('Selected time:', timeStr)
+  }
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-black via-neutral-900 to-neutral-800 px-6 py-24">
       {/* Header */}
-      <div className="mx-auto max-w-5xl text-center">
+      <div className="mx-auto max-w-6xl text-center">
         <p className="mb-3 text-xs tracking-widest text-neutral-400">
           BUILD · OPERATE · TRANSFER
         </p>
@@ -58,7 +81,19 @@ export default function CTA() {
               . From first sketch to production-grade systems.
             </p>
 
-            <button className="mt-8 inline-flex items-center justify-center rounded-md bg-amber-400 px-6 py-3 text-sm font-semibold text-black transition hover:bg-amber-300">
+            {/* Idea input */}
+            <div className="mt-6 space-y-3">
+              <label htmlFor="idea" className="block text-xs text-neutral-400">Share your idea</label>
+              <textarea
+                id="idea"
+                value={idea}
+                onChange={(e) => setIdea(e.target.value)}
+                placeholder="Tell us briefly what you want to build..."
+                className="w-full rounded-md border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-400/40 focus:border-neutral-600 min-h-[96px]"
+              />
+            </div>
+
+            <button onClick={handleSchedule} className="mt-4 inline-flex items-center justify-center rounded-md bg-amber-400 px-6 py-3 text-sm font-semibold text-black transition hover:bg-amber-300">
               Schedule now
             </button>
 
@@ -80,18 +115,24 @@ export default function CTA() {
             </div>
 
             <div className="mt-2 grid grid-cols-7 gap-2 text-sm">
-              {[...Array(31)].map((_, i) => (
-                <div
-                  key={i}
-                  className={`rounded-md border border-neutral-800 py-2 text-center ${
-                    [9, 10, 11, 17, 18].includes(i)
-                      ? "bg-neutral-800 text-white"
-                      : "text-neutral-500"
-                  }`}
-                >
-                  {i + 1}
-                </div>
-              ))}
+              {[...Array(31)].map((_, i) => {
+                const day = i + 1
+                const isSelected = selectedDay === day
+                return (
+                  <button
+                    type="button"
+                    key={day}
+                    onClick={() => setSelectedDay(day)}
+                    className={`rounded-md border py-2 text-center transition-colors ${
+                      isSelected
+                        ? 'border-amber-400 bg-amber-400/10 text-white'
+                        : 'border-neutral-800 text-neutral-500 hover:border-neutral-600 hover:text-neutral-300'
+                    }`}
+                  >
+                    {day}
+                  </button>
+                )
+              })}
             </div>
 
             <p className="mt-6 text-xs text-neutral-400">
@@ -99,18 +140,23 @@ export default function CTA() {
             </p>
 
             <div className="mt-3 flex flex-wrap gap-2">
-              {["09:00", "10:30", "13:00", "15:30", "17:00"].map((t) => (
-                <button
-                  key={t}
-                  className={`rounded-full border px-4 py-1 text-xs ${
-                    t === "09:00"
-                      ? "border-emerald-400 text-emerald-400"
-                      : "border-neutral-700 text-neutral-400"
-                  }`}
-                >
-                  {t}
-                </button>
-              ))}
+              {["09:00", "10:30", "13:00", "15:30", "17:00"].map((t) => {
+                const isPicked = selectedTime === t
+                return (
+                  <button
+                    type="button"
+                    key={t}
+                    onClick={() => setSelectedTime(t)}
+                    className={`rounded-full border px-4 py-1 text-xs transition-colors ${
+                      isPicked
+                        ? 'border-emerald-400 text-emerald-400'
+                        : 'border-neutral-700 text-neutral-400 hover:border-neutral-500 hover:text-neutral-200'
+                    }`}
+                  >
+                    {t}
+                  </button>
+                )
+              })}
             </div>
 
             <p className="mt-4 text-[10px] text-neutral-500">

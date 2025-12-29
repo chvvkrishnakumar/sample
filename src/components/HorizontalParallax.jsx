@@ -55,10 +55,10 @@ export default function HorizontalParallax() {
   const items = useMemo(() => Array.from({ length: 6 }).map((_, i) => i), [])
 
   return (
-    <section id="horizontal" ref={sectionRef} className="relative h-[280vh] bg-black">
-      <div className="sticky top-0 h-screen overflow-hidden border-t border-slate-800">
-        <div className="text-center max-w-2xl mx-auto ">
-          <p className="text-xs tracking-widest text-gray-400 mb-3">
+    <section id="horizontal" ref={sectionRef} className="relative h-[220vh] bg-black ">
+      <div className="sticky top-0 h-screen overflow-hidden bg-black border-t border-white/10">
+        <div className="text-center max-w-2xl mx-auto pt-24 sm:pt-28">
+          <p className="text-xs tracking-widest text-gray-400 mb-2">
             OUR PROJECTS
           </p>
           <h2 className="text-3xl md:text-4xl font-semibold text-white">
@@ -70,20 +70,20 @@ export default function HorizontalParallax() {
           </p>
 
           {/* Filters */}
-          <div className="flex justify-center gap-2 mt-6">
-            <span className="px-4 py-1.5 text-xs rounded-full bg-yellow-400 text-black">
+          <div className="flex justify-center gap-2 mt-2 mb-4">
+            <span className="px-4 py-1 text-xs rounded-full bg-yellow-400 text-black">
               All
             </span>
-            <span className="px-4 py-1.5 text-xs rounded-full border border-white/10 text-gray-300">
+            <span className="px-4 py-1 text-xs rounded-full border border-white/10 text-gray-300">
               Client launches
             </span>
-            <span className="px-4 py-1.5 text-xs rounded-full border border-white/10 text-gray-300">
+            <span className="px-4 py-1 text-xs rounded-full border border-white/10 text-gray-300">
               Buildbot products
             </span>
           </div>
         </div>
         <Parallax translateX={["0px", (inView ? endX : "0px")]} startScroll={startScroll} endScroll={endScroll} className="h-full">
-          <div ref={trackRef} className="h-full flex items-center gap-8 px-12" style={{ width: '200vw' }}>
+          <div ref={trackRef} className="h-auto flex items-center gap-6 px-8" style={{ width: '160vw' }}>
             {items.map((i) => (
               <Panel key={i} index={i} />
             ))}
@@ -100,7 +100,7 @@ export default function HorizontalParallax() {
 
 function Panel({ index }) {
   return (
-    <div className="shrink-0 w-[60vw] max-w-[720px] h-[60vh] rounded-3xl border border-white/20 bg-black p-8 relative">
+    <div className="shrink-0 w-[50vw] max-w-[560px] h-[50vh] rounded-2xl border border-white/20 bg-black p-6 relative">
       <div className="h-full flex flex-col justify-between">
         <div>
           <h3 className="text-2xl md:text-3xl font-bold mb-2 text-white">Showcase {index + 1}</h3>

@@ -40,7 +40,7 @@ export default function Insights() {
       </div>
 
       {/* Cards */}
-      <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8">
         {posts.map((post, i) => (
           <article
             key={i}

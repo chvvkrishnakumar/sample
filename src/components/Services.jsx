@@ -63,8 +63,11 @@ export default function Services() {
           {services.map((service, i) => (
             <div
               key={i}
-              className="rounded-xl border border-white/10 bg-white/5 p-5 hover:border-white/20 transition"
+              className="relative group rounded-xl border border-white/10 bg-white/5 p-5 hover:border-white/20 transition overflow-hidden"
             >
+              <span className="pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-yellow-400 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+              {/* Light gradient overlay */}
+              <span className="pointer-events-none absolute inset-0 bg-gradient-to-br from-yellow-400/10 via-transparent to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300" aria-hidden />
               {/* Icon */}
               <div
                 className={`inline-flex items-center justify-center w-9 h-9 rounded-md mb-4 ${service.color}`}
