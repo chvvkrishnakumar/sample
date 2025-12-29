@@ -1,5 +1,6 @@
 // src/components/Services.jsx
 import { Cpu, Compass, Cog, Megaphone, Shield, Wrench } from "lucide-react";
+import Reveal from './Reveal'
 
 export default function Services() {
   const services = [
@@ -46,21 +47,28 @@ export default function Services() {
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
+          <Reveal y={8}>
           <p className="text-xs tracking-widest text-gray-400 mb-3">
             OUR SERVICES AT BUILDBOT TECHNOLOGIES
           </p>
+          </Reveal>
+          <Reveal delay={80} y={10}>
           <h2 className="text-3xl md:text-4xl font-semibold text-white">
             We design, build, and operate products end-to-end
           </h2>
+          </Reveal>
+          <Reveal delay={140} y={12}>
           <p className="mt-4 text-sm text-gray-400">
             End-to-end product delivery from early discovery through launch and
             long-term support.
           </p>
+          </Reveal>
         </div>
 
         {/* Services grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {services.map((service, i) => (
+            <Reveal y={14} delay={i * 60}>
             <div
               key={i}
               className="relative group rounded-xl border border-white/10 bg-white/5 p-5 hover:border-white/20 transition overflow-hidden"
@@ -83,6 +91,7 @@ export default function Services() {
                 {service.desc}
               </p>
             </div>
+            </Reveal>
           ))}
         </div>
       </div>

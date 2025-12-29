@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 export default function Insights() {
   const posts = [
     {
@@ -27,22 +29,28 @@ export default function Insights() {
     <section id="insights" className="bg-black px-6 py-24">
       {/* Header */}
       <div className="mx-auto max-w-4xl text-center mb-16">
+        <Reveal y={8}>
         <p className="mb-3 text-xs tracking-widest text-gray-400">
           INSIGHTS
         </p>
+        </Reveal>
+        <Reveal delay={80} y={10}>
         <h2 className="text-4xl font-bold text-white">
           Thinking from the build frontlines
         </h2>
+        </Reveal>
+        <Reveal delay={140} y={12}>
         <p className="mt-4 text-sm text-gray-400 max-w-2xl mx-auto">
           Practical, product-led perspectives on AI, SaaS, and modern engineering
           — written by the teams shipping the work.
         </p>
+        </Reveal>
       </div>
 
       {/* Cards */}
       <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8">
         {posts.map((post, i) => (
-          <article
+          <Reveal y={14} delay={i * 80} as="article"
             key={i}
             className="group rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-white/0 overflow-hidden transition hover:border-white/20"
           >
@@ -76,7 +84,7 @@ export default function Insights() {
                 </span>
               </div>
             </div>
-          </article>
+          </Reveal>
         ))}
       </div>
     </section>

@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 export default function Security() {
   const pills = [
     { label: 'Clutch Global B2B Leader' },
@@ -19,18 +21,18 @@ export default function Security() {
     <section id="security" className="bg-black px-6 py-28">
       <div className="mx-auto max-w-6xl text-center">
         {/* Heading */}
-        <h1 className="text-4xl md:text-5xl font-semibold text-white">
+        <Reveal y={8} as="h1" className="text-4xl md:text-5xl font-semibold text-white">
           ISO-certified. Secure. Ready for mission-critical products.
-        </h1>
+        </Reveal>
 
         {/* Subheading */}
-        <p className="mt-4 mx-auto max-w-3xl text-sm md:text-base text-gray-400">
+        <Reveal delay={100} y={10} as="p" className="mt-4 mx-auto max-w-3xl text-sm md:text-base text-gray-400">
           Buildbot teams have shipped and scaled products with global enterprises
           and fast-moving startups across healthcare, fintech, mobility, and manufacturing.
-        </p>
+        </Reveal>
 
         {/* Pills */}
-        <div className="mt-4 flex flex-wrap justify-center gap-3">
+        <Reveal delay={160} y={12} className="mt-4 flex flex-wrap justify-center gap-3">
           {pills.map((p) => (
             <span
               key={p.label}
@@ -40,7 +42,7 @@ export default function Security() {
               {p.label}
             </span>
           ))}
-        </div>
+        </Reveal>
 
         {/* Trust line */}
         <p className="mt-8 text-[11px] tracking-widest text-gray-500">
@@ -48,7 +50,7 @@ export default function Security() {
         </p>
 
         {/* Logos */}
-        <div className="mt-6 flex flex-wrap justify-center gap-x-10 gap-y-4">
+        <Reveal delay={220} y={12} className="mt-6 flex flex-wrap justify-center gap-x-10 gap-y-4">
           {logos.map((logo) => (
             <span
               key={logo}
@@ -57,7 +59,7 @@ export default function Security() {
               {logo}
             </span>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   )

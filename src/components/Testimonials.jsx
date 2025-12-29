@@ -1,9 +1,11 @@
+import Reveal from './Reveal'
+
 export default function Testimonials() {
   return (
     <section id="careers" className="bg-black px-6 py-24">
       <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Left content */}
-        <div>
+        <Reveal y={8}>
           <p className="text-xs tracking-widest text-gray-400 mb-4">
             CAREERS
           </p>
@@ -30,45 +32,45 @@ export default function Testimonials() {
             <li>• Flexible location with overlapping core hours</li>
           </ul>
 
-          <button className="mt-10 inline-flex items-center gap-2 rounded-full bg-amber-400 px-6 py-3 text-sm font-semibold text-black transition hover:bg-amber-300">
+          <button className="mt-10 inline-flex items-center gap-2 rounded-full bg-amber-400 px-6 py-3 text-sm font-semibold text-black trans-300 hover:bg-amber-300 hover:lift tap:shrink">
             View open roles
             <span aria-hidden>→</span>
           </button>
-        </div>
+        </Reveal>
 
         {/* Right image collage */}
         <div className="grid grid-cols-2 gap-6">
           {/* Large left image */}
-          <div className="row-span-2 overflow-hidden rounded-2xl">
+          <Reveal y={16} className="row-span-2 overflow-hidden rounded-2xl">
             <img
               src="/sample.jpg"
               alt="Team collaborating"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover trans-500 hover:scale-[1.05]"
               loading="lazy"
             />
-          </div>
+          </Reveal>
 
           {/* Top right */}
-          <div className="overflow-hidden rounded-2xl">
+          <Reveal y={16} delay={120} className="overflow-hidden rounded-2xl">
             <img
               src="/sample.jpg"
               alt="High five moment"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover trans-500 hover:scale-[1.05]"
               loading="lazy"
             />
-          </div>
+          </Reveal>
 
           {/* Bottom right */}
-          <div className="overflow-hidden rounded-2xl">
+          <Reveal y={16} delay={200} className="overflow-hidden rounded-2xl">
             <img
               src="/sample.jpg"
               alt="Team planning session"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover trans-500 hover:scale-[1.05]"
               loading="lazy"
             />
-          </div>
-        </div>
-      </div>
+          </Reveal>
+       </div>
+       </div>
     </section>
   );
 }

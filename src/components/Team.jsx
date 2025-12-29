@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 export default function Team() {
   const team = [
     {
@@ -42,9 +44,9 @@ export default function Team() {
         {/* Team Grid */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-14">
           {team.map((member, i) => (
-            <div key={i} className="flex flex-col items-center">
+            <Reveal key={i} y={14} delay={i * 80} className="flex flex-col items-center">
               {/* Avatar */}
-              <div className="w-36 h-36 rounded-full overflow-hidden border border-white/10 mb-6">
+              <div className="w-36 h-36 rounded-full overflow-hidden border border-white/10 mb-6 trans-300 hover:lift">
                 <img
                   src={member.image}
                   alt={member.name}
@@ -77,7 +79,7 @@ export default function Team() {
               <p className="mt-3 text-xs text-gray-500 leading-relaxed max-w-xs">
                 {member.desc}
               </p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
