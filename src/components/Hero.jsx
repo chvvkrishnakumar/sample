@@ -3,7 +3,7 @@ import { Parallax } from 'react-scroll-parallax'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
       {/* Background glow with subtle vertical parallax */}
       <Parallax translateY={[-20, 20]} className="absolute inset-0 pointer-events-none">
         <div className="w-full h-full bg-gradient-to-b from-white/10 via-black to-black" />

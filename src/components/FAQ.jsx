@@ -24,7 +24,7 @@ export default function Insights() {
   ];
 
   return (
-    <section className="bg-black px-6 py-24">
+    <section id="insights" className="bg-black px-6 py-24">
       {/* Header */}
       <div className="mx-auto max-w-4xl text-center mb-16">
         <p className="mb-3 text-xs tracking-widest text-gray-400">

@@ -21,7 +21,7 @@ export default function Team() {
   ];
 
   return (
-    <section className="bg-black py-28 px-6">
+    <section id="leadership" className="bg-black py-28 px-6">
       <div className="max-w-6xl mx-auto text-center">
         {/* Eyebrow */}
         <p className="text-xs tracking-widest text-gray-400 mb-4">

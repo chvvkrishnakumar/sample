@@ -16,7 +16,7 @@ export default function Security() {
   ]
 
   return (
-    <section className="bg-black px-6 py-28">
+    <section id="security" className="bg-black px-6 py-28">
       <div className="mx-auto max-w-6xl text-center">
         {/* Heading */}
         <h1 className="text-4xl md:text-5xl font-semibold text-white">
