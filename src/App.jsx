@@ -1,20 +1,10 @@
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Stats from "./components/Stats";
-import Services from "./components/Services";
-// import Products from "./components/Products";
-import Security from "./components/Security";
-import Team from "./components/Team";
-import CTA from "./components/CTA";
 import Footer from "./components/Footer";
-import Testimonials from "./components/Testimonials";
-import FAQ from "./components/FAQ";
-import HorizontalParallax from "./components/HorizontalParallax";
-import BottomLeftCarousel from "./components/BottomLeftCarousel";
-import TechStack from "./components/TechStack.jsx";
-
-import { useState } from "react";
+import { Routes, Route, Outlet, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Modal from "./components/ui/Modal";
+import Home from "./pages/Home";
+import Careers from "./pages/Careers";
 
 export default function App() {
   const [contactOpen, setContactOpen] = useState(false);
@@ -22,29 +12,47 @@ export default function App() {
   return (
     <>
       <Navbar onContactClick={() => setContactOpen(true)} />
-      <Hero />
-      {/* <Team /> */}
-      <Stats />
-      <Services />
-      {/* <Products /> */}
-      <HorizontalParallax />
-      <TechStack />
-      <Security />
-      <Team />
-      <CTA />
-      <Testimonials />
-      <FAQ />
+
+      <Routes>
+        <Route element={<Layout contactOpen={contactOpen} setContactOpen={setContactOpen} />}>
+          <Route index element={<Home />} />
+          <Route path="careers" element={<Careers />} />
+        </Route>
+      </Routes>
+    </>
+  );
+}
+
+function ScrollManager() {
+  const location = useLocation();
+  useEffect(() => {
+    // On route change, scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // If there's a hash, try to scroll to it after a tick
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      // wait for route content to render
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 0);
+    }
+  }, [location.pathname, location.hash]);
+  return null;
+}
+
+function Layout({ contactOpen, setContactOpen }) {
+  return (
+    <>
+      <ScrollManager />
+      <Outlet />
       <Footer />
-
-      {/* Bottom-left mini carousel to jump to Products */}
-      <BottomLeftCarousel />
-
       <Modal open={contactOpen} onClose={() => setContactOpen(false)} title="Contact us">
         <form
           className="space-y-4"
           onSubmit={(e) => {
             e.preventDefault();
-            // Placeholder submit handler
             setContactOpen(false);
           }}
         >

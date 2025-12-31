@@ -1,10 +1,9 @@
 import Reveal from './Reveal'
 
-import { useState } from 'react'
-import Modal from './ui/Modal'
+import { Link } from 'react-router-dom'
 
 export default function Testimonials() {
-  const [comingSoon, setComingSoon] = useState(false);
+  
   return (
     <section id="careers" className="bg-black px-6 py-24">
       <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -36,10 +35,10 @@ export default function Testimonials() {
             <li>• Flexible location with overlapping core hours</li>
           </ul>
 
-          <button onClick={() => setComingSoon(true)} className="mt-10 inline-flex items-center gap-2 rounded-full bg-amber-400 px-6 py-3 text-sm font-semibold text-black trans-300 hover:bg-amber-300 hover:lift tap:shrink focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-amber-400">
+          <Link to="/careers" className="mt-10 inline-flex items-center gap-2 rounded-full bg-amber-400 px-6 py-3 text-sm font-semibold text-black trans-300 hover:bg-amber-300 hover:lift tap:shrink focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-amber-400">
             View open roles
             <span aria-hidden>→</span>
-          </button>
+          </Link>
         </Reveal>
 
         {/* Right image collage */}
@@ -75,15 +74,7 @@ export default function Testimonials() {
           </Reveal>
        </div>
        </div>
-      {/* Coming soon modal */}
-      <Modal open={comingSoon} onClose={() => setComingSoon(false)} title="Careers">
-        <div className="space-y-4">
-          <p className="text-gray-700">Open roles are coming soon. Check back shortly!</p>
-          <div className="flex justify-end">
-            <button onClick={() => setComingSoon(false)} className="px-4 py-2 rounded-lg bg-amber-400 text-black font-medium hover:bg-amber-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400">Got it</button>
-          </div>
-        </div>
-      </Modal>
+      
     </section>
   );
 }

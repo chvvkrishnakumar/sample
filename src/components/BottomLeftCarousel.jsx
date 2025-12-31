@@ -4,13 +4,34 @@ import { useEffect, useMemo, useState } from "react";
   Bottom-left automatic mini carousel showing only an image.
   - Cycles through items automatically (no arrows, no scroll buttons).
   - Clicking the image scrolls smoothly to the Products section (id="horizontal").
+   { title: 'Agriport', image: 'products/Agriport.png', desc: 'IoT-driven agriculture analytics' },
+    { title: 'Aqualens', image: 'products/Aqua.png', desc: 'Health insights from wearables' },
+    { title: 'Civic Pulse', image: 'products/Civic.png', desc: 'Monetization and publishing tools' },
+    { title: 'Cloud Doctor', image: 'products/Cloud.png', desc: 'Real-time ops and reporting' },
+    { title: 'CVM Beach Productions', image: 'products/cvm.png', desc: 'Automations and copilots' },
+    { title: 'Perfect Rubber Industry', image: 'products/Rubber.png', desc: 'Interactive analytics and BI' },
+
+    { title: 'Spark', image: 'products/Spark.png', desc: 'Interactive analytics and BI' },
+
+    { title: 'St.Pete Conf', image: 'products/St.png', desc: 'Interactive analytics and BI' },
+  ], [])
 */
 export default function BottomLeftCarousel({ intervalMs = 2500 }) {
   const items = useMemo(
     () => [
-      { id: 1, title: "Showcase 1", image: "/1.png", href: "#horizontal" },
-      { id: 2, title: "Showcase 2", image: "/2.png", href: "#horizontal" },
-      { id: 3, title: "Showcase 3", image: "/3.png", href: "#horizontal" },
+      { id: 1, title: "Showcase 1", image: "products/Agriport.png", href: "#horizontal" },
+      { id: 2, title: "Showcase 2", image: "products/Aqua.png", href: "#horizontal" },
+      { id: 3, title: "Showcase 3", image: "products/Civic.png", href: "#horizontal" },
+
+      { id: 3, title: "Showcase 3", image: "products/Cloud.png", href: "#horizontal" },
+
+      { id: 3, title: "Showcase 3", image: "products/cvm.png", href: "#horizontal" },
+
+      { id: 3, title: "Showcase 3", image: "products/Rubber.png", href: "#horizontal" },
+
+      { id: 3, title: "Showcase 3", image: "products/Spark.png", href: "#horizontal" },
+
+      { id: 3, title: "Showcase 3", image: "products/St.png", href: "#horizontal" },
     ],
     []
   );
