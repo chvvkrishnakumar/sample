@@ -10,6 +10,8 @@ import Footer from "./components/Footer";
 import Testimonials from "./components/Testimonials";
 import FAQ from "./components/FAQ";
 import HorizontalParallax from "./components/HorizontalParallax";
+import BottomLeftCarousel from "./components/BottomLeftCarousel";
+import TechStack from "./components/TechStack.jsx";
 
 import { useState } from "react";
 import Modal from "./components/ui/Modal";
@@ -26,12 +28,16 @@ export default function App() {
       <Services />
       {/* <Products /> */}
       <HorizontalParallax />
+      <TechStack />
       <Security />
       <Team />
       <CTA />
       <Testimonials />
       <FAQ />
       <Footer />
+
+      {/* Bottom-left mini carousel to jump to Products */}
+      <BottomLeftCarousel />
 
       <Modal open={contactOpen} onClose={() => setContactOpen(false)} title="Contact us">
         <form

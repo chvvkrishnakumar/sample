@@ -4,25 +4,25 @@ import Reveal from './Reveal'
 export default function Insights() {
   const posts = [
     {
-      category: "PRODUCT",
-      title: "From MVP to durable product in 12 months.",
-      description:
-        "How we structure discovery, launch, and iteration when speed and quality both matter.",
+      category: "Tech",
+      title: "Running Senaite LIMS Completely Offline with Docker",
+      description: "",
       image: "/insite1.png",
+      url: "https://www.linkedin.com/pulse/running-senaite-lims-completely-offline-ptlbc/?trackingId=YARU0b5LEvKJbiRUfPvbnA%3D%3D"
     },
     {
-      category: "AI",
-      title: "Designing AI features that feel native, not bolted on.",
-      description:
-        "Patterns we’re seeing across successful AI products — and red flags to avoid.",
-      image: "/sample.jpg",
+      category: "Tech",
+      title: "Deploying a Serverless Django Application Using Zappa",
+      description: "",
+      image: "/insite2.png",
+      url: "https://www.linkedin.com/pulse/deploying-serverless-django-application-iwkdc/?trackingId=sG54J0AgANcA2bDW65vW0g%3D%3D"
     },
     {
-      category: "GROWTH",
-      title: "Using data & experimentation to tune SaaS pricing.",
-      description:
-        "A playbook for aligning monetization with customer value using real usage data.",
-      image: "/sample.jpg", 
+      category: "Tech",
+      title: "WSO2 API Manager 4.1.0 Deployment on AlmaLinux 9 with MySQL Integration",
+      description: "",
+      image: "/insite3.png",
+      url: "https://www.linkedin.com/pulse/wso2-api-manager-410-deployment-almalinux-yi1sc/?trackingId=jKXBlxrRSfHC1d0Z3iVAXw%3D%3D"
     },
   ];
 
@@ -51,17 +51,24 @@ export default function Insights() {
       {/* Cards */}
       <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8">
         {posts.map((post, i) => (
-          <Reveal y={14} delay={i * 80} as="article"
+          <Reveal
+            y={14}
+            delay={i * 80}
+            as="a"
+            href={post.url}
+            target="_blank"
+            rel="noopener noreferrer"
             key={i}
-            className="group rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-white/0 overflow-hidden transition hover:border-white/20"
+            className="group block rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-white/0 overflow-hidden transition hover:border-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400"
+            aria-label={post.title}
           >
             {/* Image */}
-            <div className="aspect-[4/3] overflow-hidden">
+            <div className=" overflow-hidden">
               <img
                 src={post.image}
                 alt={post.title}
                 loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                className="h-auto w-auto object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
 

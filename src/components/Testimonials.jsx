@@ -47,7 +47,7 @@ export default function Testimonials() {
           {/* Large left image */}
           <Reveal y={16} className="row-span-2 overflow-hidden rounded-2xl">
             <img
-              src="/sample.jpg"
+              src="/cer.png"
               alt="Team collaborating"
               className="h-full w-full object-cover trans-500 hover:scale-[1.05]"
               loading="lazy"
@@ -57,7 +57,7 @@ export default function Testimonials() {
           {/* Top right */}
           <Reveal y={16} delay={120} className="overflow-hidden rounded-2xl">
             <img
-              src="/sample.jpg"
+              src="/group.jpeg"
               alt="High five moment"
               className="h-full w-full object-cover trans-500 hover:scale-[1.05]"
               loading="lazy"

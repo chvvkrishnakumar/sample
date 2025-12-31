@@ -48,7 +48,7 @@ export default function Footer() {
                   href="mailto:sales@chromezy.com"
                   className="hover:text-white transition"
                 >
-                  sales@chromezy.com
+                  info@buildbot.tech
                 </a>
               </div>
             </div>
@@ -113,7 +113,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-4 py-6 text-xs md:flex-row">
           <p>
-            © 2025 Buildbot Technologies, All Rights Reserved
+            © 2026 Buildbot Technologies, All Rights Reserved
           </p>
 
           <div className="flex items-center gap-4">
