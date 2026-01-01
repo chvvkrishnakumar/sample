@@ -68,9 +68,8 @@ export default function Services() {
         {/* Services grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
           {services.map((service, i) => (
-            <Reveal y={14} delay={i * 60}>
+            <Reveal key={service.title} y={14} delay={i * 60}>
             <div
-              key={i}
               className="relative group w-full max-w-xs rounded-xl border border-white/10 bg-white/5 p-3 hover:border-white/20 transition overflow-hidden ring-1 ring-transparent group-hover:ring-yellow-400/40 hover:shadow-[0_0_40px_rgba(251,191,36,0.25)]"
             >
               <span className="pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-yellow-400 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />

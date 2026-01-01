@@ -29,8 +29,8 @@ export default function Navbar({ onContactClick }) {
         </ul>
 
         {/* CTA Button */}
-        <button onClick={onContactClick} className="flex items-center gap-2 bg-yellow-400 text-black px-5 py-2 rounded-full text-sm font-medium hover:bg-yellow-300 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-yellow-400">
-          Contact us
+        <button  className="flex items-center gap-2 bg-yellow-400 text-black px-5 py-2 rounded-full text-sm font-medium hover:bg-yellow-300 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-yellow-400">
+          <Link to="/#cta">Contact us</Link>
           <ArrowRight className="w-4 h-4" />
         </button>
       </nav>
