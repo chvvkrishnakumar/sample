@@ -38,7 +38,8 @@ export default function Footer() {
                   href="tel:+13153080901"
                   className="hover:text-white transition"
                 >
-                  +1 315 308 0901
+                  +91 7416677365
+
                 </a>
               </div>
 

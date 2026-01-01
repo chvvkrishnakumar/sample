@@ -95,11 +95,11 @@ export default function HorizontalParallax() {
         </div>
         <Parallax translateX={["0px", (inView ? endX : "0px")]} startScroll={startScroll} endScroll={endScroll} className="h-full">
           <div ref={trackRef} className="h-auto flex items-center gap-6 px-8" style={{ width: '160vw' }}>
-<h1 className='text-6xl font-extrabold'>
+{/* <h1 className='text-6xl font-extrabold'>
 
         Featured
 Products
-</h1>
+</h1> */}
             {products.map((p, i) => (
               <Panel key={i} index={i} product={p} />
             ))}
@@ -114,7 +114,7 @@ Products
 
 function Panel({ index, product }) {
   return (
-    <div className="shrink-0 w-[50vw] max-w-[560px] h-[50vh] rounded-2xl border border-white/20 bg-black p-6 relative">
+    <div className="shrink-0 w-[38vw] max-w-[480px] h-[50vh] rounded-2xl border border-white/20 bg-black p-6 relative">
       
       <div className="h-full flex flex-col justify-between">
         <div>

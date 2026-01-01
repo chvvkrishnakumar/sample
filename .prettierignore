@@ -1,0 +1,12 @@
+node_modules
+build
+dist
+coverage
+public/*.png
+public/*.jpg
+public/*.jpeg
+public/*.gif
+public/**/*.png
+public/**/*.jpg
+public/**/*.jpeg
+public/**/*.gif

@@ -1,3 +1,4 @@
+import { ArrowBigRightIcon } from 'lucide-react';
 import Reveal from './Reveal'
 
 import { Link } from 'react-router-dom'
@@ -37,7 +38,7 @@ export default function Testimonials() {
 
           <Link to="/careers" className="mt-10 inline-flex items-center gap-2 rounded-full bg-amber-400 px-6 py-3 text-sm font-semibold text-black trans-300 hover:bg-amber-300 hover:lift tap:shrink focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-amber-400">
             View open roles
-            <span aria-hidden>→</span>
+            <ArrowBigRightIcon></ArrowBigRightIcon>
           </Link>
         </Reveal>
 

@@ -23,15 +23,15 @@ export default function BottomLeftCarousel({ intervalMs = 2500 }) {
       { id: 2, title: "Showcase 2", image: "products/Aqua.png", href: "#horizontal" },
       { id: 3, title: "Showcase 3", image: "products/Civic.png", href: "#horizontal" },
 
-      { id: 3, title: "Showcase 3", image: "products/Cloud.png", href: "#horizontal" },
+      { id: 4, title: "Showcase 3", image: "products/Cloud.png", href: "#horizontal" },
 
-      { id: 3, title: "Showcase 3", image: "products/cvm.png", href: "#horizontal" },
+      { id: 5, title: "Showcase 3", image: "products/cvm.png", href: "#horizontal" },
 
-      { id: 3, title: "Showcase 3", image: "products/Rubber.png", href: "#horizontal" },
+      { id: 6, title: "Showcase 3", image: "products/Rubber.png", href: "#horizontal" },
 
-      { id: 3, title: "Showcase 3", image: "products/Spark.png", href: "#horizontal" },
+      { id: 7, title: "Showcase 3", image: "products/Spark.png", href: "#horizontal" },
 
-      { id: 3, title: "Showcase 3", image: "products/St.png", href: "#horizontal" },
+      { id: 8, title: "Showcase 3", image: "products/St.png", href: "#horizontal" },
     ],
     []
   );
@@ -61,7 +61,7 @@ export default function BottomLeftCarousel({ intervalMs = 2500 }) {
   const current = items[index];
 
   return (
-    <div className="fixed bottom-4 left-4 z-50">
+    <div className="absolute bottom-4 left-4 z-50">
       <a
         href={current.href}
         onClick={(e) => onClick(e, current.href)}

@@ -24,7 +24,6 @@ export default function Home() {
       <Testimonials />
       <FAQ />
       {/* Bottom-left mini carousel to jump to Case Studies */}
-      <BottomLeftCarousel />
     </>
   );
 }
