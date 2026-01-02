@@ -6,13 +6,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-16 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2 text-white text-xl font-semibold">
-              Buildbot
-              <span className="flex gap-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
-              </span>
+            <div className="flex items-center gap-3">
+              <img src="/image.png" alt="Company logo" className="h-8 w-auto object-contain" />
             </div>
 
             <p className="mt-4 max-w-md text-gray-400 leading-relaxed">
