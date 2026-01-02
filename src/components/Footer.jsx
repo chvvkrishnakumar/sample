@@ -2,104 +2,76 @@ export default function Footer() {
   return (
     <footer className="bg-black px-6 pt-20 text-sm text-gray-400">
       <div className="mx-auto max-w-6xl">
-        {/* Top section */}
-        <div className="grid grid-cols-1 gap-16 md:grid-cols-4">
+        {/* Top grid */}
+        <div className="grid grid-cols-1 gap-16 md:grid-cols-6">
           {/* Brand */}
-          <div className="md:col-span-2">
-            <div className="flex items-center gap-3">
-              <img src="/image.png" alt="Company logo" className="h-8 w-auto object-contain" />
+          <div className="md:col-span-3">
+            <div className="flex items-center gap-2">              <img
+                src="/image.png"
+                alt="Buildbot logo"
+                className="h-8 w-auto"
+              />
             </div>
 
-            <p className="mt-4 max-w-md text-gray-400 leading-relaxed">
-              Not just about software & product development; we’re your tech
-              partners, crafting modern digital solutions for next-gen
-              excellence!
+            <p className="mt-4 max-w-sm leading-relaxed">
+              A premium digital product and AI studio partnering with teams who
+              care about thoughtful strategy, clean execution, and long‑term
+              impact.
             </p>
 
-            <div className="mt-6 flex gap-4 text-xs">
-              <a href="#" className="hover:text-white transition">
-                Terms
-              </a>
-              <span>|</span>
-              <a href="#" className="hover:text-white transition">
-                Privacy
-              </a>
-            </div>
-
-            <div className="mt-8 space-y-3 text-sm">
-              <div className="flex items-center gap-3">
-                <span className="text-amber-400">☎</span>
-                <a
-                  href="tel:+13153080901"
-                  className="hover:text-white transition"
-                >
-                  +91 7416677365
-
-                </a>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <span className="text-amber-400">✉</span>
-                <a
-                  href="mailto:sales@chromezy.com"
-                  className="hover:text-white transition"
-                >
-                  info@buildbot.tech
-                </a>
-              </div>
+            <div className="mt-6 space-y-2 text-sm">
+              <p className="text-white">+91 7416677365</p>
+              <p>info@buildbot.tech</p>
             </div>
           </div>
 
-          {/* Column 1 */}
+          {/* Navigation */}
           <div>
-            <ul className="space-y-4">
-              <li className="flex items-center justify-between border-b border-white/5 pb-2">
-                <span>Home</span>
-                <span>›</span>
-              </li>
-              <li className="flex items-center justify-between border-b border-white/5 pb-2">
-                <span>About Us</span>
-                <span>›</span>
-              </li>
-              <li className="flex items-center justify-between border-b border-white/5 pb-2">
-                <span>Career</span>
-                <span>›</span>
-              </li>
-              <li className="flex items-center justify-between border-b border-white/5 pb-2">
-                <span>Case Study</span>
-                <span>›</span>
-              </li>
-              <li className="flex items-center justify-between pt-2 font-semibold text-white">
-                <span>Join the Team</span>
-                <span>›</span>
-              </li>
+            <h4 className="mb-4 font-semibold text-white">Navigation</h4>
+            <ul className="space-y-2">
+              <li>Services</li>
+              <li>Products</li>
+              <li>Leadership</li>
+              <li>Careers</li>
+              <li>Contact</li>
             </ul>
           </div>
 
-          {/* Column 2 */}
+          {/* Resources */}
           <div>
-            <ul className="space-y-4">
-              <li className="flex items-center justify-between border-b border-white/5 pb-2">
-                <span>AI</span>
-                <span>›</span>
-              </li>
-              <li className="flex items-center justify-between border-b border-white/5 pb-2">
-                <span>MVP</span>
-                <span>›</span>
-              </li>
-              <li className="flex items-center justify-between border-b border-white/5 pb-2">
-                <span>SaaS</span>
-                <span>›</span>
-              </li>
-              <li className="flex items-center justify-between border-b border-white/5 pb-2">
-                <span>E-commerce</span>
-                <span>›</span>
-              </li>
-              <li className="flex items-center justify-between pt-2 font-semibold text-amber-400">
-                <span>Work with us</span>
-                <span>›</span>
-              </li>
+            <h4 className="mb-4 font-semibold text-white">Resources</h4>
+            <ul className="space-y-2">
+              <li>Insights</li>
+              <li>Careers</li>
+              <li>Newsletter</li>
             </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="mb-4 font-semibold text-white">Contact</h4>
+            <p className="mb-4">Slack & email support</p>
+
+            <div className="flex gap-3">
+              <a
+                href="#"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20"
+              >
+                in
+              </a>
+              <a
+                href="#"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20"
+              >
+                x
+              </a>
+              <a
+                href="#"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20"
+              >
+                ◎
+              </a>
+            </div>
           </div>
         </div>
 
@@ -108,21 +80,11 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-4 py-6 text-xs md:flex-row">
-          <p>
-            © 2026 Buildbot Technologies, All Rights Reserved
-          </p>
+          <p>© 2026 Buildbot. All rights reserved.</p>
 
-          <div className="flex items-center gap-4">
-            <span className="text-gray-400">Connect with us:</span>
-            <a href="#" className="hover:text-white transition">
-              f
-            </a>
-            <a href="#" className="hover:text-white transition">
-              ◎
-            </a>
-            <a href="#" className="hover:text-white transition">
-              in
-            </a>
+          <div className="flex gap-4">
+            <a href="#" className="hover:text-white">Privacy</a>
+            <a href="#" className="hover:text-white">Terms</a>
           </div>
         </div>
       </div>
