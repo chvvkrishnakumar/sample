@@ -1,4 +1,4 @@
-import Reveal from './Reveal'
+import { MotionReveal as Reveal } from '@/components/aceternity/motion-reveal'
 import { ShieldCheck, Award, Cloud } from 'lucide-react'
 
 export default function Security() {

@@ -2,6 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    /* Light mode colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+    --surface: 0 0% 96%;
+    --border: 0 0% 85%;
+    --accent: 45 93% 45%;
+    --accent-hover: 45 93% 40%;
+    --muted: 0 0% 50%;
+    --muted-foreground: 0 0% 35%;
+  }
+
+  .dark {
+    /* Dark mode colors - Black bg with yellow accents */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+    --surface: 0 0% 100% / 0.05;
+    --border: 0 0% 100% / 0.1;
+    --accent: 45 93% 54%;
+    --accent-hover: 45 93% 47%;
+    --muted: 0 0% 70%;
+    --muted-foreground: 0 0% 60%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
 html, body, #root {
   height: 100%;
 }

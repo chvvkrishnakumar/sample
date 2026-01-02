@@ -1,5 +1,5 @@
 import { ArrowBigRightIcon } from 'lucide-react';
-import Reveal from './Reveal'
+import { MotionReveal as Reveal } from '@/components/aceternity/motion-reveal'
 
 import { Link } from 'react-router-dom'
 

@@ -1,4 +1,4 @@
-import Reveal from './Reveal'
+import { MotionReveal as Reveal } from '@/components/aceternity/motion-reveal'
 
 
 export default function Insights() {
