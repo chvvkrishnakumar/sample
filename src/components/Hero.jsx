@@ -17,7 +17,9 @@ export default function Hero() {
           {/* Badge */}
           <Reveal y={8} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs text-gray-300 mb-8">
             <span className="w-2 h-2 rounded-full bg-yellow-400" />
-            BUILD · OPERATE · TRANSFER STUDIO
+                        <span className="font-bold text-yellow-400" >
+
+            BUILD · OPERATE · TRANSFER </span>
           </Reveal>
 
           {/* Heading */}
@@ -28,8 +30,7 @@ export default function Hero() {
 
           {/* Subtitle */}
           <Reveal delay={160} y={12} as="p" className="mt-6 text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
-            We'll build your idea. We'll operate your product. We'll transfer the
-            ownership.
+           We'll build your idea, we'll operate the product and we'll transfer the ownsership.
           </Reveal>
 
           {/* Actions */}
